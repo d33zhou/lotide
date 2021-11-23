@@ -10,11 +10,9 @@ const assertEqual = function(actual, expected) {
 };
 
 
-//TEST CASES
-/* 
+// TEST CASES
 assertEqual("Lighthouse Labs", "Bootcamp");
 assertEqual(1, 1);
 
 assertEqual("Labs", "Labs");
 assertEqual(1, 2);
- */

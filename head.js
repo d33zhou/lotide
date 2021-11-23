@@ -8,13 +8,13 @@ const assertEqual = function(actual, expected) {
 
 
 // create function head which returns the first item in the array (the element, not as an array)
-function head(input) {
+const head = function(input) {
   return input[0];
-}
+};
 
 
 //TEST CASES
-/* assertEqual(head([5,6,7]), 5);
+assertEqual(head([5,6,7]), 5);
 assertEqual(head(["Hello", "Lighthouse", "Labs"]), "Hello");
 assertEqual(head([5]), 5);
-assertEqual(head([]), undefined); */
+assertEqual(head([]), undefined);

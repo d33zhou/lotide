@@ -10,9 +10,9 @@ const eqArrays = function(arr1, arr2) {
   }
 
   return same;
-}
+};
 
-const assertArraysEqual = function (actual, expected) {
+const assertArraysEqual = function(actual, expected) {
   let evalEqual;
   
   eqArrays(actual, expected) ? evalEqual = `✅✅✅ Assertion Passed: ${actual} === ${expected}` : evalEqual = `🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`;
