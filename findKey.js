@@ -16,16 +16,6 @@ const findKey = function (object, callback) {
 };
 
 
-const findKeyByValue = function(scanObj, findStr) {
-  let keyMatch;
-
-  for (const scan in scanObj) {
-    scanObj[scan] === findStr ? keyMatch = scan : "";
-  }
-
-  return keyMatch;
-};
-
 // TEST CASES
 const result1 = findKey({
   "Blue Hill": { stars: 1 },
