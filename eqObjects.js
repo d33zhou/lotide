@@ -21,16 +21,19 @@ const eqArrays = function(arr1, arr2) {
 };
 
 // Returns true if both objects have identical keys with identical values.
-// Otherwise you get back a big fat false!
 const eqObjects = function(object1, object2) {
-  if (Object.keys(object1).length === Object.keys(object2).length) {
-    for (const key in object1) {
-      if (Array.isArray(object1[key])) {
-        if (!eqArrays(object1[key], object2[key])) {
+  if (Object.keys(object1).length === Object.keys(object2).length) {  // if objs have same # keys
+    for (const key in object1) {                                      // for each key
+      if (Array.isArray(object1[key])) {                              // if key is array
+        if (!eqArrays(object1[key], object2[key])) {                  // check arrays equal
           return false;
         }
-      } else {
-        if (object1[key] !== object2[key]) {
+      } else if (typeof object1[key] === "object" && object1[key] !== null) { // check if obj
+        if (!eqObjects(object1[key], object2[key])) {                 // if obj, use recursion
+          return false;
+        }
+      } else {                                                        // assumes primitive type
+        if (object1[key] !== object2[key]) {                          // check key values equal
           return false;
         }
       }
@@ -57,3 +60,12 @@ console.log(eqObjects(cd, dc)); // => true
 
 const cd2 = { c: "1", d: ["2", 3, 4] };
 console.log(eqObjects(cd, cd2)); // => false
+
+// RECURSION TEST CASES
+console.log(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => true
+console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { y: 0, z: 1 }, b: 2 })); // => true
+console.log(eqObjects({ a: { b: { c: { d: 1}}}, b: 2 }, { a: { b: { c: { d: 1}}}, b: 2 })); // => true
+
+console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => false
+console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 })); // => false
+console.log(eqObjects({ a: { b: { c: { d: 1}}}, b: 2 }, { a: { b: { c: { d: 2}}}, b: 2 })); // => false
