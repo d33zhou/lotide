@@ -9,10 +9,4 @@ const assertEqual = function(actual, expected) {
   console.log(evalEqual);
 };
 
-
-// TEST CASES
-assertEqual("Lighthouse Labs", "Bootcamp");
-assertEqual(1, 1);
-
-assertEqual("Labs", "Labs");
-assertEqual(1, 2);
+module.exports = assertEqual;
