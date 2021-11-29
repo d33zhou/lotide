@@ -1,7 +1,7 @@
 {
-  "name": "lotide",
+  "name": "@d33zhou/lotide",
   "version": "1.0.0",
-  "description": "",
+  "description": "Lotide library for Lighthouse Labs Project 1",
   "main": "assertArraysEqual.js",
   "directories": {
     "test": "test"
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/d33zhou/lotide.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "David Zhou",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/d33zhou/lotide/issues"
