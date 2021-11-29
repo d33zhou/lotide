@@ -1,12 +1,28 @@
-const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 const tail = require('../tail');
 
-let result = tail(["Hello", "Lighthouse", "Labs"]);
-assertEqual(result.length, 2); // ensure we get back two elements
-assertEqual(result[0], "Lighthouse"); // ensure first element is "Lighthouse"
-assertEqual(result[1], "Labs"); // ensure second element is "Labs"
+describe("#tail", () => {
+  it("should return 2 elements for an array of 3 elements", () => {
+    assert.strictEqual(tail(["Hello", "Lighthouse", "Labs"]).length, 2);
+  });
+  
+  it("should return 'Lighthouse' for the first element of the returned array", () => {
+    assert.strictEqual(tail(["Hello", "Lighthouse", "Labs"])[0], 'Lighthouse');
+  });
 
-result = tail([]);
-assertEqual(result.length, 0);
-assertEqual(result[0], undefined);
-assertEqual(result[1], undefined);
+  it("should return 'Labs' for the second element of the returned array", () => {
+    assert.strictEqual(tail(["Hello", "Lighthouse", "Labs"])[1], 'Labs');
+  });
+
+  it("should return 0 elements for an array of no elements", () => {
+    assert.strictEqual(tail([]).length, 0);
+  });
+
+  it("should return undefined for an array of no elements", () => {
+    assert.strictEqual(tail([])[0], undefined);
+  });
+
+  it("should return [2, 3] for an array [1, 2, 3]", () => {
+    assert.deepEqual(tail([1, 2, 3]), [2, 3]);
+  });
+});
