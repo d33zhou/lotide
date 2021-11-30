@@ -1,25 +1,4 @@
-const eqArrays = function(arr1, arr2) {
-  let same = true;
-
-  if (arr1.length === arr2.length) {
-    for (let i = 0; i < arr1.length; i++) {
-      arr1[i] !== arr2[i] ? same = false : "";
-    }
-  } else {
-    same = false;
-  }
-
-  return same;
-};
-
-const assertArraysEqual = function(actual, expected) {
-  let evalEqual;
-  
-  eqArrays(actual, expected) ? evalEqual = `✅✅✅ Assertion Passed: ${actual} === ${expected}` : evalEqual = `🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`;
-
-  console.log(evalEqual);
-};
-
+// take an array, and add each element from the beginning into a new array until the callback function evaluates to true, then return the new array.
 const takeUntil = function(array, callback) {
   const results = [];
 
@@ -34,14 +13,4 @@ const takeUntil = function(array, callback) {
   return results;
 };
 
-
-// TEST CASES
-const data1 = [1, 2, 5, 7, 2, -1, 2, 4, 5];
-const results1 = takeUntil(data1, x => x < 0);
-assertArraysEqual(results1, [1, 2, 5, 7, 2]);
-
-console.log('---');
-
-const data2 = ["I've", "been", "to", "Hollywood", ",", "I've", "been", "to", "Redwood"];
-const results2 = takeUntil(data2, x => x === ',');
-assertArraysEqual(results2, ["I've", "been", "to", "Hollywood"]);
+module.exports = takeUntil;

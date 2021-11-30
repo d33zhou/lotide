@@ -1,17 +1,34 @@
-const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 const eqArrays = require('../eqArrays');
 
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
-assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), false);
+describe("#eqArrays", () => {
+  it("should return true if two identical number arrays are given", () => {
+    const array1 = [1, 2, 3];
+    const array2 = [1, 2, 3];
+    assert.isTrue(eqArrays(array1, array2));
+  });
 
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true);
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false);
+  it("should return true if two identical string arrays are given", () => {
+    const array1 = ["1", "2", "3"];
+    const array2 = ["1", "2", "3"];
+    assert.isTrue(eqArrays(array1, array2));
+  });
 
-// RECURSION TEST CASES
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4]]), true)
-assertEqual(eqArrays([[[[[[1]]]]]], [[[[[[1]]]]]]), true)
-assertEqual(eqArrays([1, [2, [3, [4]]]], [1, [2, [3, [4]]]]), true)
+  it("should return true if two identical nested arrays are given (1 layer of nesting)", () => {
+    const array1 = [[2, 3], [4]];
+    const array2 = [[2, 3], [4]];
+    assert.isTrue(eqArrays(array1, array2));
+  });
 
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]), false)
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], 4]), false)
-assertEqual(eqArrays([[[[[[1]]]]]], [[[[[[2]]]]]]), false)
+  it("should return true if two identical nested arrays are given (4 layers of nesting)", () => {
+    const array1 = [1, [2, [3, [4]]]];
+    const array2 = [1, [2, [3, [4]]]];
+    assert.isTrue(eqArrays(array1, array2));
+  });
+
+  it("should return true if two identical nested arrays are given (many layers of nesting)", () => {
+    const array1 = [[[[[[1]]]]]];
+    const array2 = [[[[[[1]]]]]];
+    assert.isTrue(eqArrays(array1, array2));
+  });
+});

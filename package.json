@@ -1,8 +1,8 @@
 {
   "name": "@d33zhou/lotide",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lotide library for Lighthouse Labs Project 1",
-  "main": "assertArraysEqual.js",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
